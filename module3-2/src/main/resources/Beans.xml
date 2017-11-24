@@ -1,0 +1,75 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id = "person" class = "com.larinego.Person" factory-method="getInstance">
+        <property name = "name" value="Alex"/>
+    </bean>
+
+    <bean id = "constructorBean" class = "com.larinego.ConstructorBean">
+        <constructor-arg index="0" value="Alexander"/>
+    </bean>
+
+    <bean id = "dog" class = "com.larinego.Dog" lazy-init="true">
+        <property name = "name" value="Borbos"/>
+        <property name = "age" value="5"/>
+    </bean>
+
+    <bean id = "horse" class = "com.larinego.Horse" init-method="init" destroy-method="destroy" p:name="Plotva" p:age = "5" lazy-init="true"/>
+
+    <bean id = "rabbit-mummy" class = "com.larinego.Rabbit" p:name="Rabbit-mummy" p:age = "3">
+        <property name="children">
+            <set>
+              <ref bean="rabbit-son"></ref>
+              <ref bean="rabbit-daugter"></ref>
+            </set>
+        </property>
+    </bean>
+
+    <bean id = "rabbit-son" class = "com.larinego.Rabbit" p:name="Rabbit-son" p:age = "1"/>
+    <bean id = "rabbit-daugter" class = "com.larinego.Rabbit" p:name="Rabbit-daugter" p:age = "2"/>
+
+    <bean id = "basket" class = "com.larinego.Basket">
+        <property name="basket">
+            <map>
+                <entry key-ref="product1" value="5"/>
+                <entry key-ref="product2" value="2"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id = "product1" class = "com.larinego.Product" p:name="Salt"/>
+    <bean id = "product2" class = "com.larinego.Product" p:name="Milk"/>
+
+    <bean id = "propsBean" class = "com.larinego.PropsBean">
+        <property name="properties">
+            <props>
+                <prop key="country">Belarus</prop>
+                <prop key="city">Minsk</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id = "nullValueBean" class = "com.larinego.NullValueBean">
+        <property name="name">
+            <null/>
+        </property>
+    </bean>
+
+    <bean id = "expBean" class = "com.larinego.ExpressionBean">
+
+      <!--  <property name="ageFirstMoreThenSecond" value="#{(rabbit.children.size() ge 2) ? (rabbit.children.get(0).age gt rabbit.children.get(1).age) : false}"/>-->
+
+        <property name="sumProductCounts" value="#{(basket.basket.size() ge 2 and basket.basket.size() le 4) ? basket.basket.get(product1).intValue() + basket.basket.get(product2).intValue() : 0}"/>
+        <property name="collectionField" value="#{rabbit-mummy.children[0].name}"/>
+
+
+    </bean>
+
+
+
+</beans>

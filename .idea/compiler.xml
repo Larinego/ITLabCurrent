@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="module-2" />
+        <module name="module2-2" />
+        <module name="module2-3" />
+        <module name="module2-4" />
+        <module name="module2-5" />
+        <module name="module2-6" />
+        <module name="module2-7" />
+        <module name="module2-8" />
+        <module name="module25" />
+        <module name="module3-1" />
+        <module name="module3-2" />
+        <module name="module3-3" />
+        <module name="module3-4" />
+        <module name="module3-5" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="module-2" target="1.5" />
+      <module name="module2" target="1.8" />
+      <module name="module2-2" target="1.8" />
+      <module name="module2-3" target="1.8" />
+      <module name="module2-4" target="1.8" />
+      <module name="module2-5" target="1.8" />
+      <module name="module2-6" target="1.8" />
+      <module name="module2-7" target="1.8" />
+      <module name="module2-8" target="1.8" />
+      <module name="module25" target="1.8" />
+      <module name="module3-1" target="1.8" />
+      <module name="module3-2" target="1.8" />
+      <module name="module3-3" target="1.8" />
+      <module name="module3-4" target="1.8" />
+      <module name="module3-5" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

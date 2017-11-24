@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <bean id = "mainClass" class = "com.larinego.MainClass"/>
+    <bean id = "aspectClass" class = "com.larinego.AspectClass"/>
+    <aop:config>
+        <aop:pointcut id="aopSpringTargetMethodBefore" expression="execution(* com.larinego.MainClass.aopSpringTargetMethodBefore())" />
+        <aop:pointcut id="aopSpringTargetMethodAround" expression="execution(* com.larinego.MainClass.aopSpringTargetMethodAround())" />
+        <aop:pointcut id="aopSpringTargetMethodWithException" expression="execution(* com.larinego.MainClass.aopSpringTargetMethodWithException())" />
+        <aop:pointcut id="aopSpringTargetMethodParam" expression="execution(* com.larinego.MainClass.aopSpringTargetMethod(String, String)) and args(name, surname)"/>
+        <aop:aspect id="aspect" ref="aspectClass">
+
+        <aop:before pointcut-ref="aopSpringTargetMethodBefore" method="before"/>
+        <aop:after pointcut-ref="aopSpringTargetMethodBefore" method="after"/>
+        <aop:around pointcut-ref="aopSpringTargetMethodAround" method="around"/>
+        <aop:after-throwing pointcut-ref="aopSpringTargetMethodWithException" method="afterThrowing"/>
+        <aop:before pointcut-ref="aopSpringTargetMethodParam" method="beforeWork" arg-names="name, surname"/>
+
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>
