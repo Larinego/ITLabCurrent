@@ -29,7 +29,7 @@ public class UserDaoImpl implements DAO<User> {
         return false;
     }
 
-    @Override
+    @Override    
     public User get(Serializable id) {
         EntityManager entityManager = HibernateUtil.getEntityManager();
         User user = null;
@@ -43,6 +43,9 @@ public class UserDaoImpl implements DAO<User> {
             entityManager.close();
         }
         return user;
+        
+        
+        
     }
 
     @Override
